@@ -21,27 +21,61 @@ class Stack{
   }
 
   pop(){
-    // if(this.top === null){
-    //   return null;
-    // }
+    if(this.top === null){
+      return null;
+    }
     let node = this.top;
     this.top = node.next;
     return node.data;
   }
 }
 
-function main(){
-  let starTrek = new Stack();
-  starTrek.push('Kirk');
-  starTrek.push('Spock');
-  starTrek.push('McCoy');
-  starTrek.push('Scotty');
+const peek = (stack) => {
+  return stack.top; 
+};
 
-  console.log(
-    JSON.stringify(
-      starTrek
-    ,null, 2)
-  );
+const display = (stack) => {
+  let currNode = stack.top;
+  while(currNode !== null){
+    console.log(currNode.data + ',');
+    currNode = currNode.next;
+  }
+};
+
+function is_palindrome(s) {
+  s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+  let strStack = new Stack();
+  for(let i = 0; i < s.length; i++){
+    strStack.push(s[i]);
+  }
+  let revStr = '';
+  let currNode = strStack.top;
+  while(currNode !== null){
+    revStr+=currNode.data;
+    currNode = currNode.next;
+  }
+  return s === revStr;
+}
+
+function main(){
+  // Create a Stack class
+  // let starTrek = new Stack();
+  // starTrek.push('Kirk');
+  // starTrek.push('Spock');
+  // starTrek.push('McCoy');
+  // starTrek.push('Scotty');
+  // starTrek.pop();
+
+  // Useful methods for stack
+  // console.log(peek(starTrek));
+  // display(starTrek);
+  // starTrek.pop();
+
+  // Check for palindromes
+  // console.log(is_palindrome('dad'));
+  // console.log(is_palindrome('A man, a plan, a canal: Panama'));
+  // console.log(is_palindrome('1001'));
+  // console.log(is_palindrome('Tauhida'));
 }
 main();
 
