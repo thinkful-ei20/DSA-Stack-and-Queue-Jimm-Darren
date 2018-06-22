@@ -114,6 +114,18 @@ function main(){
   bank.dequeue();
   bank.dequeue();
   bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
+  bank.dequeue();
 
   console.log(JSON.stringify(bank,null, 2));
 }
