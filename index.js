@@ -88,7 +88,7 @@ function checkParens(mathEx){
 
 
 function sortStack(inStack){
-  sortedStack = new Stack();
+  let sortedStack = new Stack();
   let saved;
   while(inStack.top !== null){
     if(sortedStack.top === null || inStack.top.data < sortedStack.top.data){
