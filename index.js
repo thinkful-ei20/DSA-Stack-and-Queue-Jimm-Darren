@@ -1,7 +1,7 @@
 class _Node {
   constructor(data,next) {
-      this.data=data,
-      this.next=next
+    this.data=data,
+    this.next=next;
   }
 }
 
@@ -66,32 +66,26 @@ function checkParens(mathEx){
   let mathStack = new Stack();
   for (let i = 0; i < mathEx.length; i++) {
     if(mathEx[i] === '('){
-      mathStack.push(mathEx[i]);
-    }
-    if(mathEx[i] === ')'){
+      mathStack.push({char: mathEx[i], pos: i});
+    } else if(mathEx[i] === ')'){
       if(mathStack.top === null){
         return i;
-      }
-      mathStack.pop();
-    }   
-  }
-  if(mathStack.top !== null){
-    for (let i = 0; i < mathEx.length; i++) {
-      if(mathEx[i] === '('){
+      } else {
         mathStack.pop();
       }
-      if(mathStack.top === null){
-        return i;
-      }
-    }
+    }   
   }
-  return mathStack.top === null ? true : false;
+  return mathStack.top === null ? true : mathStack.top.data.pos;
 }
-let mathExample = '2(2(x) + 1))(y * 2)';
-//let mathExample = '())';
+let mathExample1 = '2()(2(x) + 1)';
+let mathExample2 = '3(x+2))';
+let mathExample3 = '2()((2(x)+1)';
+let mathExample4 = ')2()((2(x)+1)(';
 
-
-console.log(checkParens(mathExample));
+console.log(checkParens(mathExample1)); // true
+console.log(checkParens(mathExample2)); // 6
+console.log(checkParens(mathExample3)); // 3
+console.log(checkParens(mathExample4)); // 0
 
 
 function main(){
