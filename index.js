@@ -69,6 +69,9 @@ function checkParens(mathEx){
       mathStack.push(mathEx[i]);
     }
     if(mathEx[i] === ')'){
+      if(mathStack.top === null){
+        return i;
+      }
       mathStack.pop();
     }   
   }
@@ -82,10 +85,10 @@ function checkParens(mathEx){
       }
     }
   }
-  return mathStack.top === null ? true : false
+  return mathStack.top === null ? true : false;
 }
-// let mathExample = '2(2(x) + 1)((y * 2)';
-let mathExample = '(((((()))';
+let mathExample = '2(2(x) + 1))(y * 2)';
+//let mathExample = '())';
 
 
 console.log(checkParens(mathExample));
