@@ -57,6 +57,40 @@ function is_palindrome(s) {
   return s === revStr;
 }
 
+// example --- '2(2(x) + 1)(y * 2)'
+// loop through 
+// find ( push onto a new stack
+// find ) pop from stack
+// when loop ends new stak .top === null
+function checkParens(mathEx){
+  let mathStack = new Stack();
+  for (let i = 0; i < mathEx.length; i++) {
+    if(mathEx[i] === '('){
+      mathStack.push(mathEx[i]);
+    }
+    if(mathEx[i] === ')'){
+      mathStack.pop();
+    }   
+  }
+  if(mathStack.top !== null){
+    for (let i = 0; i < mathEx.length; i++) {
+      if(mathEx[i] === '('){
+        mathStack.pop();
+      }
+      if(mathStack.top === null){
+        return i;
+      }
+    }
+  }
+  return mathStack.top === null ? true : false
+}
+// let mathExample = '2(2(x) + 1)((y * 2)';
+let mathExample = '(((((()))';
+
+
+console.log(checkParens(mathExample));
+
+
 function main(){
   // Create a Stack class
   // let starTrek = new Stack();
