@@ -84,15 +84,6 @@ function main(){
   // console.log(JSON.stringify(example,null, 2));
 
   let bank = new SnakeQueue();
-  // for(let i = 0; i < 25; i++){
-  //   snake.enqueue(`${i}`);
-  // }
-  // for(let j = 0; j < 25; j++){
-  //   setInterval(()=>{
-  //     snake.dequeue();
-  //   }, 2000);
-  // }
-
   bank.enqueue('a');
   bank.enqueue('b');
   bank.enqueue('c');
@@ -105,7 +96,6 @@ function main(){
   bank.enqueue('j');
   bank.enqueue('k');
 
-  
   bank.dequeue();
   bank.dequeue();
   bank.dequeue();
