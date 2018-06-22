@@ -77,15 +77,55 @@ function checkParens(mathEx){
   }
   return mathStack.top === null ? true : mathStack.top.data.pos;
 }
-let mathExample1 = '2()(2(x) + 1)';
-let mathExample2 = '3(x+2))';
-let mathExample3 = '2()((2(x)+1)';
-let mathExample4 = ')2()((2(x)+1)(';
 
-console.log(checkParens(mathExample1)); // true
-console.log(checkParens(mathExample2)); // 6
-console.log(checkParens(mathExample3)); // 3
-console.log(checkParens(mathExample4)); // 0
+
+// inputStack --- 6 5 3 4 2 1
+// savedVal
+// sortedStack
+// loop inputStack
+// if currNode < sortedStack.top -> sortedStack.push(currNode)
+// else savedVall = currNode +  
+
+
+function sortStack(inStack){
+  sortedStack = new Stack();
+  let saved;
+  while(inStack.top !== null){
+    if(sortedStack.top === null || inStack.top.data < sortedStack.top.data){
+      sortedStack.push(inStack.pop());
+    } else {
+      saved = inStack.top;
+      while(sortStack.top !== null){
+        if(saved.data >= sortedStack.top.data){
+          inStack.push(sortedStack.pop());
+        } else {
+          sortedStack.push(saved);
+        }
+      }
+    }    
+  }
+  return sortedStack;
+}
+// sorted - 2
+// sorted - 1, 2
+// saved - 4
+// 
+//
+//
+//
+
+
+let exampleStack = new Stack();
+exampleStack.push(5);
+exampleStack.push(6);
+exampleStack.push(3);
+exampleStack.push(4);
+exampleStack.push(1);
+exampleStack.push(2);
+display(exampleStack);
+
+
+display(sortStack(exampleStack));
 
 
 function main(){
@@ -107,6 +147,17 @@ function main(){
   // console.log(is_palindrome('A man, a plan, a canal: Panama'));
   // console.log(is_palindrome('1001'));
   // console.log(is_palindrome('Tauhida'));
+
+  // Check for Parenthesis
+// let mathExample1 = '2()(2(x) + 1)';
+// let mathExample2 = '3(x+2))';
+// let mathExample3 = '2()((2(x)+1)';
+// let mathExample4 = ')2()((2(x)+1)(';
+
+// console.log(checkParens(mathExample1)); // true
+// console.log(checkParens(mathExample2)); // 6
+// console.log(checkParens(mathExample3)); // 3
+// console.log(checkParens(mathExample4)); // 0
 }
 main();
 
